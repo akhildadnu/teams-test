@@ -20,23 +20,23 @@ phases:
     commands:
      - echo $CODEBUILD_RESOLVED_SOURCE_VERSION
     
-#     finally:
-#       - |
-#         if [ $CODEBUILD_BUILD_SUCCEEDING -eq 0 ]; then
-#           echo "import pymsteams" | tee -a python.py
-#           echo "myTeamsMessage = pymsteams.connectorcard(\"https://zertain.webhook.office.com/webhookb2/2e39c5d4-9f28-487f-b81b-e914e19601cc@bfea0d66-7869-4844-b196-e530d72f8652/IncomingWebhook/d43ed4de8aba40f892c5709996659103/0780dee0-b73d-46dc-a975-3c463c2d5855\")" | tee -a python.py
-#           echo "myTeamsMessage.text(\"$CODEBUILD_SOURCE_VERSION failed\")" | tee -a python.py
-#           echo "myTeamsMessage.send()" | tee -a python.py
-#           ls
-#           python3 python.py
-#         else
-#           echo "import pymsteams" | tee -a python.py
-#           echo "myTeamsMessage = pymsteams.connectorcard(\"https://zertain.webhook.office.com/webhookb2/2e39c5d4-9f28-487f-b81b-e914e19601cc@bfea0d66-7869-4844-b196-e530d72f8652/IncomingWebhook/d43ed4de8aba40f892c5709996659103/0780dee0-b73d-46dc-a975-3c463c2d5855\")" | tee -a python.py
-#           echo "myTeamsMessage.text(\"$CODEBUILD_SOURCE_VERSION success\")" | tee -a python.py
-#           echo "myTeamsMessage.send()" | tee -a python.py
-#           ls
-#           python3 python.py
-#         fi
+    finally:
+      - |
+        if [ $CODEBUILD_BUILD_SUCCEEDING -eq 0 ]; then
+          echo "import pymsteams" | tee -a python.py
+          echo "myTeamsMessage = pymsteams.connectorcard(\"https://zertain.webhook.office.com/webhookb2/2e39c5d4-9f28-487f-b81b-e914e19601cc@bfea0d66-7869-4844-b196-e530d72f8652/IncomingWebhook/d43ed4de8aba40f892c5709996659103/0780dee0-b73d-46dc-a975-3c463c2d5855\")" | tee -a python.py
+          echo "myTeamsMessage.text(\"commit id $CODEBUILD_RESOLVED_SOURCE_VERSION failed (test commit)\")" | tee -a python.py
+          echo "myTeamsMessage.send()" | tee -a python.py
+          ls
+          python3 python.py
+        else
+          echo "import pymsteams" | tee -a python.py
+          echo "myTeamsMessage = pymsteams.connectorcard(\"https://zertain.webhook.office.com/webhookb2/2e39c5d4-9f28-487f-b81b-e914e19601cc@bfea0d66-7869-4844-b196-e530d72f8652/IncomingWebhook/d43ed4de8aba40f892c5709996659103/0780dee0-b73d-46dc-a975-3c463c2d5855\")" | tee -a python.py
+          echo "myTeamsMessage.text(\"commit id $CODEBUILD_RESOLVED_SOURCE_VERSION success (test commit)\")" | tee -a python.py
+          echo "myTeamsMessage.send()" | tee -a python.py
+          ls
+          python3 python.py
+        fi
      
        
 
