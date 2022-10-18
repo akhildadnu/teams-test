@@ -18,7 +18,7 @@ phases:
 
   post_build:
     commands:
-     - CODEBUILD_BUILD_SUCCEEDING
+     - CODEBUILD_RESOLVED_SOURCE_VERSION
     
 #     finally:
 #       - |
