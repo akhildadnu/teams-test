@@ -8,6 +8,7 @@ phases:
      - pip3 install pymsteams
      
   pre_build:
+    on-failure: CONTINUE
     commands:
      - echo $CODEBUILD_SOURCE_VERSION
      - aws codebuild list-build-batches --region us-east-1
@@ -18,6 +19,7 @@ phases:
      - ls -al
 
   post_build:
+    on-failure: CONTINUE
     commands:
      - echo $CODEBUILD_RESOLVED_SOURCE_VERSION
     
