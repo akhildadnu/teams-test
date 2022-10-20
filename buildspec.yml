@@ -6,20 +6,18 @@ phases:
      - sudo yum install python3 -y
      - sudo yum install python3-pip -y
      - pip3 install pymsteams
-     
+     - cat 
   pre_build:
-    on-failure: CONTINUE
     commands:
      - echo $CODEBUILD_SOURCE_VERSION
+     - echo $CODEBUILD_RESOLVED_SOURCE_VERSION
      - aws codebuild list-build-batches --region us-east-1
-     
   build: 
     on-failure: CONTINUE  
     commands:
      - ls -al
 
   post_build:
-    on-failure: CONTINUE
     commands:
      - echo $CODEBUILD_RESOLVED_SOURCE_VERSION
     
@@ -41,6 +39,3 @@ phases:
           python3 python.py
         fi
      
-       
-
- 
