@@ -17,6 +17,8 @@ phases:
     on-failure: CONTINUE  
     commands:
      - ls -al
+     - touch akhil
+     - ls
 
   post_build:
     commands:
