@@ -8,6 +8,7 @@ phases:
      - pip3 install pymsteams
      - cat 
   pre_build:
+    on-failure: CONTINUE
     commands:
      - echo $CODEBUILD_SOURCE_VERSION
      - echo $CODEBUILD_RESOLVED_SOURCE_VERSION
